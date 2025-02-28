@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=aircraft_production_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgre
+    ports:
+      - "5434:5432"
+
+  web:
+    build: .
+    command: bash -c "python manage.py wait_for_db && python manage.py makemigrations && python manage.py migrate && python manage.py init_teams && python manage.py init_responsibilities && python manage.py init_users && python manage.py init_aircraft && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgres://postgres:postgre@db:5432/aircraft_production_db
+  
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - web
+volumes:
+  postgres_data:

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Part{% endblock %}
+
+{% block content %}
+    <h1 class="my-4">Create Part</h1>
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        {{ part_form.as_p }}
+        <button type="submit" class="btn btn-primary">Create Part</button>
+    </form>
+    {% if form.errors %}
+        <div class="alert alert-danger mt-3">
+            <p>{{ form.errors }}</p>
+        </div>
+    {% endif %}
+{% endblock %}
