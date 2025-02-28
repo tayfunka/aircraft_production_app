@@ -32,7 +32,7 @@ Ensure you have the following installed on your system:
 
     Clone the repository to your local machine:
     ```sh
-    git clone <repository-url>
+    git clone https://github.com/tayfunka/aircraft_production_app.git
     cd aircraft_production_app
     ```
 
