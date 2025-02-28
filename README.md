@@ -2,15 +2,20 @@
 
 ## Getting Started
 
+The Aircraft Production App is deployed and accessible via the following public IP address:
+
+Public IP: https://51.20.173.125
+
+You can use this address to access the deployed application.
 ## General Info
 
 The Aircraft Production App is structured into several key components:
 
-- **Backend**: The backend is built using Django, It handles the business logic, database interactions, and API endpoints.
+- **Backend**: The backend is built using Django and DRF, It handles the business logic, database interactions, and API endpoints.
 - **Database**: PostgreSQL is used as the database to store all the application data, including user information, aircraft details, and production records.
 - **Containers**: Docker and Docker Compose are used to containerize the application, making it easy to set up and run in any environment.
 
-This modular structure ensures that each component can be developed, tested, and scaled independently.
+This modular structure ensures that each component can be developed, and scaled independently.
 
 
 ### Prerequisites
@@ -48,6 +53,16 @@ Ensure you have the following installed on your system:
     - Build and start the Django application container.
     - Initialize the database with the necessary tables and data.
     - Start the Nginx container to serve the application.
+
+
+
+    ```sh
+    nginx-1  | 2025/02/28 18:19:41 [emerg] 1#1: cannot load certificate "/etc/nginx/certs/nginx.crt": BIO_new_file() failed (SSL: error:80000002:system library::No such file or directory:calling fopen(/etc/nginx/certs/nginx.crt, r) error:10000080:BIO routines::no such file)
+    nginx-1  | nginx: [emerg] cannot load certificate "/etc/nginx/certs/nginx.crt": BIO_new_file() failed (SSL: error:80000002:system library::No such file or directory:calling fopen(/etc/nginx/certs/nginx.crt, r) error:10000080:BIO routines::no such file)
+    ```
+
+    Note: Skipping this error log because the certificate files are stored on the server, not locally.
+
 
 4. **Initialize Teams and Responsibilities**
 
@@ -119,15 +134,21 @@ Once the application is up and running, you can access it in your web browser at
 ```
 http://localhost:8000
 ```
-
-### Stopping the Application
-
-To stop the application, press `Ctrl+C` in the terminal where `docker-compose up` is running. Alternatively, you can run:
-```sh
-docker-compose down
+You can also reach the app via:
+```
+https://51.20.173.125
 ```
 
 
+### Deployment Information
+
+- The Aircraft Production App is deployed on an AWS EC2 instance with the following infrastructure:
+- Operating System: Linux Fedora
+- Public IP: Elastic IP (51.20.173.125) for a static address
+- Containerization: Docker and Docker Compose used for deploying services
+- Reverse Proxy: Nginx configured as a reverse proxy for managing requests
+- SSL Certificates: Generated using OpenSSL, but currently not fully recognized as secure by browsers.
+- Hosting: Deployed entirely on the EC2 instance using Dockerized services
 
 ### Requirements Status
 
@@ -156,9 +177,8 @@ docker-compose down
 
 ### Extra Note
 
-An EC2 instance was created and an Elastic IP was allocated. Subsequently, a domain named `tayfunkarakavuz.me` was acquired. However, there were issues encountered while attempting to create an SSL certificate for the server, which prevented the ability to send requests via HTTPS. As a result, the deployment process could not be fully completed.
+A domain named `tayfunkarakavuz.me` was acquired for that app purpose but never used. Instead I decided to use Elastic IP address: `51.20.173.125`
+ 
 ### Conclusion
 
 You have successfully set up and started the Aircraft Production App. You can now explore the application and its features.
-
-

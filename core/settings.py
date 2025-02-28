@@ -14,11 +14,6 @@ from pathlib import Path
 import os
 import dj_database_url
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
-    )
-}
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,9 +28,9 @@ SECRET_KEY = 'django-insecure-y8bihk3a@75aaf#wiy(02ip(azt1_0v12%c1@d2d^c4c8pnj+z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '51.20.173.125', 'tayfunkarakavuz.me']
+# ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', '51.20.173.125', 'tayfunkarakavuz.me', 'web:8000']
 
-
+ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
@@ -112,6 +107,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # }
 
 
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL')
+    )
+}
+
 LOGIN_URL = 'personnel:login'
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -153,3 +154,15 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://51.20.173.125',
+    'http://tayfunkarakavuz.me',
+    'http://localhost',
+    'http://127.0.0.1',
+    'https://51.20.173.125',
+    'https://tayfunkarakavuz.me',
+    'https://localhost',
+    'https://127.0.0.1',
+]
