@@ -16,5 +16,6 @@ urlpatterns = [
          name='assemble-aircraft'),
     path('aircraft-list/', views.ListAircraftAssemblyView.as_view(),
          name='aircraft-list'),
-
+    path('api/aircraft-list-datatable/', views.AircraftAssemblyListViewDatatable.as_view(),
+         name='aircraft-list-datatable'),
 ]

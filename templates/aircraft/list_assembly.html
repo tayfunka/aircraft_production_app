@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}List of Assembled Aircrafts{% endblock %}
 
 {% block content %}
@@ -9,17 +9,12 @@
         <tr>
             <th>Aircraft Name</th>
             <th>Assembled By</th>
-            <th>Assembly Date</th>
+            <th>Parts</th>
         </tr>
     </thead>
-    <tbody>
-        {% for assembly in assemblies %}
-        <tr>
-            <td>{{ assembly.aircraft.name }}</td>
-            <td>{{ assembly.assembled_by.name }}</td>
-            <td>{{ assembly.assembly_date }}</td>
-        </tr>
-        {% endfor %}
+    <tbody id="aircraft-list-body">
+        <!-- Rows will be here -->
     </tbody>
 </table>
+<script src="{% static 'js/aircraft.js' %}"></script>
 {% endblock %}

@@ -4,11 +4,25 @@
 
 The Aircraft Production App is deployed and accessible via the following public IP address:
 
+You can use this to access the deployed application:
+
 Public IP: https://51.20.173.125
+
+### API Documentation
+
+The API documentation is available via Swagger. You can access it at:
+```
+http://localhost:8000/api/docs/
+```
+or
+```
+http://51.20.173.125/api/docs/
+```
+
 
 Use one of [these](#users) accounts for logging in.
 
-You can use this address to access the deployed application.
+
 ## General Info
 
 The Aircraft Production App is structured into several key components:
@@ -90,6 +104,8 @@ Ensure you have the following installed on your system:
     Here are some examples of the data that will be initialized during the startup process:
 
     #### Users
+    - **Username**: `admin`
+        - **Password**: `Baykar.,12`
     - **Username**: `person_wing`
         - **Password**: `Baykar.,12`
         - **Team**: `Wing Team`
@@ -141,7 +157,6 @@ You can also reach the app via:
 https://51.20.173.125
 ```
 
-
 ### Deployment Information
 
 - The Aircraft Production App is deployed on an AWS EC2 instance with the following infrastructure:
@@ -153,6 +168,15 @@ https://51.20.173.125
 - Hosting: Deployed entirely on the EC2 instance using Dockerized services
 
 ### Requirements Status
+
+- Server-Side Datatable Usage: The datatable retrieves and processes data on the server using the endpoint:
+```
+/aircraft/api/aircraft-list-datatable/
+```
+-  Asynchronous Front-End Requests: The front-end uses AJAX and Fetch API to retrieve data asynchronously from:
+```
+/aircraft/aircraft-list/
+```
 
 #### Completed Requirements
 - Personnel login screen.
@@ -174,13 +198,7 @@ https://51.20.173.125
 #### Incomplete Requirements
 - Unit testing.
 - Using datatables for listing pages.
-- Server-side datatable usage.
-- Using asynchronous structures on the front-end (e.g., Ajax, fetch).
 
 ### Extra Note
 
 A domain named `tayfunkarakavuz.me` was acquired for that app purpose but never used. Instead I decided to use Elastic IP address: `51.20.173.125`
- 
-### Conclusion
-
-You have successfully set up and started the Aircraft Production App. You can now explore the application and its features.

@@ -95,23 +95,23 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "aircraft_production_db",
-#         "USER": "postgres",
-#         "PASSWORD": "postgre",
-#         "HOST": "localhost",
-#         "PORT": "5433",
-#     }
-# }
-
-
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
-    )
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "aircraft_production_db",
+        "USER": "postgres",
+        "PASSWORD": "postgre",
+        "HOST": "localhost",
+        "PORT": "5433",
+    }
 }
+
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=os.environ.get('DATABASE_URL')
+#     )
+# }
 
 LOGIN_URL = 'personnel:login'
 # Password validation
@@ -149,7 +149,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATICFILES_DIRS = [BASE_DIR / 'templates/static']
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

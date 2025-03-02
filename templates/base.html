@@ -27,12 +27,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'personnel:person' %}">Person</a>
                 </li>
-                {% if user.person.team.name == 'Assembly Team' %}
+                {% if user.personnel.team.name == 'Assembly Team' %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'aircraft:assemble-aircraft' %}">Assemble Aircraft</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'aircraft:aircraft-list' %}">List Aircraft</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'aircraft:aircraft-list-datatable' %}">List Aircraft (Datatable)</a>
                 </li>
                 {% endif %}
                 <li class="nav-item">
