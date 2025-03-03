@@ -24,10 +24,19 @@ class AssembleAircraftView(View):
     @method_decorator(login_required)
     def get(self, request):
         assemble_aircraft_form = AssembleAircraftForm()
+        parts = Part.objects.all()
+        for part in parts:
+            if part.piece == 0:
+                part.delete()
         return render(request, 'aircraft/assemble_aircraft_form.html', {'assemble_aircraft_form': assemble_aircraft_form})
 
     @method_decorator(login_required)
     def post(self, request):
+        parts = Part.objects.all()
+        for part in parts:
+            if part.piece == 0:
+                part.delete()
+
         assemble_aircraft_form = AssembleAircraftForm(request.POST)
         if assemble_aircraft_form.is_valid():
             try:
